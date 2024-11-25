@@ -2,10 +2,11 @@
 
 ## Technical Requirements & Installation
 
-[PHP 8.2](https://www.php.net/releases/8.2/en.php)
+[PHP 8.3](https://www.php.net/releases/8.3/en.php)
 [Composer (System Requirements)](https://getcomposer.org/doc/00-intro.md#system-requirements)
 [Laravel 11.33.2](https://laravel.com/docs/11.x)
 [MySql8.0](https://hub.docker.com/r/mysql/mysql-server#!)
+[Scribe](https://github.com/knuckleswtf/scribe)
 
 ## Settings
 
@@ -25,13 +26,13 @@ $ composer install
 php artisan key:generate
 ```
 
-## Aliasing the sail
+## Alias the sail
 
 ```
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 ```
 
-## Building the project
+## Build the project
 
 ```
 sail build
@@ -43,7 +44,7 @@ sail build
 sail artisan migrate
 ```
 
-## Testing
+## Run tests
 
 ```
 sail artisan test
