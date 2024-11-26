@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Chat app Api",
-        "_postman_id": "688e65e5-bbd7-4f83-85b3-fccfc67d55c7",
+        "_postman_id": "d48e7f04-0481-482f-95ff-447ab7490b7c",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -319,7 +319,7 @@
                                 {
                                     "id": "chatId",
                                     "key": "chatId",
-                                    "value": "25",
+                                    "value": "41",
                                     "description": ""
                                 }
                             ]
