@@ -1,0 +1,446 @@
+openapi: 3.0.3
+info:
+  title: 'Chat app Api'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://portaltest2.ru'
+paths:
+  /api/v1/register:
+    post:
+      summary: Регистрация
+      operationId: ''
+      description: 'Для регистрации пользователя необходимо передать `first_name`, `last_name`, `email`, `password` в теле запроса.'
+      parameters: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Registration is successful'
+                properties:
+                  message:
+                    type: string
+                    example: 'Registration is successful'
+        422:
+          description: 'validation fail'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: validation.email
+                  errors:
+                    email:
+                      - validation.email
+                properties:
+                  message:
+                    type: string
+                    example: validation.email
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - validation.email
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'Имя. Must not be greater than 255 characters.'
+                  example: Иван
+                  nullable: false
+                last_name:
+                  type: string
+                  description: 'Фамилия. Must not be greater than 255 characters.'
+                  example: Иванов
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Email. Must be a valid email address. Must not be greater than 255 characters.'
+                  example: ivan.ivanov@test.org
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Пароль. Must not be greater than 32 characters.'
+                  example: test
+                  nullable: false
+              required:
+                - first_name
+                - last_name
+                - email
+                - password
+      security: []
+  /api/v1/login:
+    get:
+      summary: Авторизация
+      operationId: ''
+      description: "Для прохождения аутентификации необходимо указать `email` и `password` в теле запроса.\n\nПосле пройденной аутентификации создается accessToken."
+      parameters:
+        -
+          in: query
+          name: email
+          description: 'Email. Must be a valid email address. Must not be greater than 255 characters.'
+          example: ivan.ivanov@test.org
+          required: true
+          schema:
+            type: string
+            description: 'Email. Must be a valid email address. Must not be greater than 255 characters.'
+            example: ivan.ivanov@test.org
+            nullable: false
+        -
+          in: query
+          name: password
+          description: 'Пароль. Must not be greater than 32 characters.'
+          example: test
+          required: true
+          schema:
+            type: string
+            description: 'Пароль. Must not be greater than 32 characters.'
+            example: test
+            nullable: false
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Authorization is successful'
+                properties:
+                  message:
+                    type: string
+                    example: 'Authorization is successful'
+        403:
+          description: 'invalid email or password'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Invalid email or password'
+                properties:
+                  message:
+                    type: string
+                    example: 'Invalid email or password'
+        422:
+          description: 'validation fail'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: validation.email
+                  errors:
+                    email:
+                      - validation.email
+                properties:
+                  message:
+                    type: string
+                    example: validation.email
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - validation.email
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/users:
+    get:
+      summary: 'Список пользователей'
+      operationId: ''
+      description: "Отдается порционно по 20 пользователей.\n\nДля получения следующих страниц необходимо передать `page` с номером страницы."
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Номер страницы.'
+          example: '1'
+          required: false
+          schema:
+            type: string
+            description: 'Номер страницы.'
+            example: '1'
+            nullable: false
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    first_name: Иван
+                    last_name: Иванов
+                    email: ivan.ivanov@test.org
+      tags:
+        - Endpoints
+  /api/v1/chats:
+    get:
+      summary: 'Получение списка чатов'
+      operationId: ''
+      description: "Отдается порционно по 20 чатов.\n\nДля получения следующих страниц необходимо передать `page` с номером страницы."
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Номер страницы.'
+          example: '1'
+          required: false
+          schema:
+            type: string
+            description: 'Номер страницы.'
+            example: '1'
+            nullable: false
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: 'Иван Иванов'
+                    created_at: '2024-05-16T19:09:48.000000Z'
+                    updated_at: '2024-05-16T19:09:48.000000Z'
+                    users:
+                      -
+                        id: 1
+                        first_name: Иван
+                        last_name: Иванов
+                        email: ivan.ivanov@test.org
+                      -
+                        id: 2
+                        first_name: Николай
+                        last_name: Николаев
+                        email: nikolay.nikolayev@test.org
+      tags:
+        - Endpoints
+    post:
+      summary: 'Создание чата'
+      operationId: ''
+      description: "Создается чат с передаваемым пользователем, если его не существует.\n\nДля создания чата с пользователем необходимо в параметрах передать `user_id`."
+      parameters: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Chat created'
+                properties:
+                  message:
+                    type: string
+                    example: 'Chat created'
+        404:
+          description: 'user not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'User not found'
+        409:
+          description: ''
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  -
+                    description: 'chat already exist'
+                    type: object
+                    example:
+                      message: 'Chat already exist'
+                    properties:
+                      message:
+                        type: string
+                        example: 'Chat already exist'
+                  -
+                    description: 'chat with yourself'
+                    type: object
+                    example:
+                      message: 'It is impossible to create a chat with yourself'
+                    properties:
+                      message:
+                        type: string
+                        example: 'It is impossible to create a chat with yourself'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: user_id.
+                  example: 2
+                  nullable: false
+              required:
+                - user_id
+  '/api/v1/chats/{chatId}/messages':
+    get:
+      summary: 'Получение списка сообщений'
+      operationId: ''
+      description: "Отдается порционно по 20 сообщений.\n\nДля получения следующих страниц необходимо передать `page` с номером страницы."
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Номер страницы.'
+          example: '1'
+          required: false
+          schema:
+            type: string
+            description: 'Номер страницы.'
+            example: '1'
+            nullable: false
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 6
+                    chat_id: 2
+                    text: test
+                    created_at: '2024-05-16T20:35:59.000000Z'
+                    updated_at: '2024-05-16T20:35:59.000000Z'
+        404:
+          description: 'chat not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Chat not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Chat not found'
+      tags:
+        - Endpoints
+    post:
+      summary: 'Создание сообщения'
+      operationId: ''
+      description: "Создается сообщение в чате.\n\nНеобходимо указать в URI `chatId` и передать `text`в теле запроса."
+      parameters: []
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Message created'
+                properties:
+                  message:
+                    type: string
+                    example: 'Message created'
+        404:
+          description: 'chat not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Chat not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Chat not found'
+        422:
+          description: 'validation fail'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: validation.max
+                  errors:
+                    text:
+                      - validation.max
+                properties:
+                  message:
+                    type: string
+                    example: validation.max
+                  errors:
+                    type: object
+                    properties:
+                      text:
+                        type: array
+                        example:
+                          - validation.max
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: 'Text. Must not be greater than 255 characters.'
+                  example: 'Тестовое сообщение'
+                  nullable: false
+              required:
+                - text
+    parameters:
+      -
+        in: path
+        name: chatId
+        description: ''
+        example: '3'
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: Endpoints
+    description: ''

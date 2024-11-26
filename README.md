@@ -26,27 +26,21 @@ $ composer install
 php artisan key:generate
 ```
 
-## Alias the sail
-
-```
-alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-```
-
 ## Build the project
 
 ```
-sail build
+docker build -t php:latest --file ./docker/Dockerfile --target php ./docker
 ```
 
 ## Create database schema
 
 ```
-sail artisan migrate
+docker exec -i php php artisan migrate
 ```
 
 ## Run tests
 
 ```
-sail artisan test
+docker exec -i php php artisan test
 ```
 
