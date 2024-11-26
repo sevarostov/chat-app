@@ -24,39 +24,43 @@ endpoints:
     bodyParameters:
       first_name:
         name: first_name
-        description: 'Имя. validation.max.'
+        description: 'Имя. Must not be greater than 255 characters.'
         required: true
         example: Иван
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       last_name:
         name: last_name
-        description: 'Фамилия. validation.max.'
+        description: 'Фамилия. Must not be greater than 255 characters.'
         required: true
         example: Иванов
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       email:
         name: email
-        description: 'Email. validation.email validation.max.'
+        description: 'Email. Must be a valid email address. Must not be greater than 255 characters.'
         required: true
         example: ivan.ivanov@test.org
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       password:
         name: password
-        description: 'Пароль. validation.max.'
+        description: 'Пароль. Must not be greater than 32 characters.'
         required: true
         example: test
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
       first_name: Иван
@@ -118,21 +122,23 @@ endpoints:
     queryParameters:
       email:
         name: email
-        description: 'Email. validation.email validation.max.'
+        description: 'Email. Must be a valid email address. Must not be greater than 255 characters.'
         required: true
         example: ivan.ivanov@test.org
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
       password:
         name: password
-        description: 'Пароль. validation.max.'
+        description: 'Пароль. Must not be greater than 32 characters.'
         required: true
         example: test
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanQueryParameters:
       email: ivan.ivanov@test.org
@@ -209,6 +215,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
+        nullable: false
         custom: []
     cleanQueryParameters:
       page: '1'
@@ -266,6 +273,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
+        nullable: false
         custom: []
     cleanQueryParameters:
       page: '1'
@@ -339,6 +347,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
       user_id: 2
@@ -410,13 +419,14 @@ endpoints:
         name: chatId
         description: ''
         required: true
-        example: '0'
+        example: '3'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      chatId: '0'
+      chatId: '3'
     queryParameters:
       page:
         name: page
@@ -426,6 +436,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
+        nullable: false
         custom: []
     cleanQueryParameters:
       page: '1'
@@ -487,24 +498,26 @@ endpoints:
         name: chatId
         description: ''
         required: true
-        example: '17'
+        example: '25'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanUrlParameters:
-      chatId: '17'
+      chatId: '25'
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       text:
         name: text
-        description: 'Text. validation.max.'
+        description: 'Text. Must not be greater than 255 characters.'
         required: true
         example: 'Тестовое сообщение'
         type: string
         enumValues: []
         exampleWasSpecified: false
+        nullable: false
         custom: []
     cleanBodyParameters:
       text: 'Тестовое сообщение'
