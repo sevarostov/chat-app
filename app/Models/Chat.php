@@ -17,7 +17,7 @@ class Chat extends Model
 
     /**
      * Пользователи чата
-     *
+     * 
      * @return BelongsToMany
      */
     public function users(): BelongsToMany
@@ -27,7 +27,7 @@ class Chat extends Model
 
     /**
      * Сообщения чата
-     *
+     * 
      * @return HasMany
      */
     public function messages(): HasMany
@@ -37,7 +37,7 @@ class Chat extends Model
 
     /**
      * Последнее сообщение чата
-     *
+     * 
      * @return HasOne
      */
     public function lastMessage(): HasOne

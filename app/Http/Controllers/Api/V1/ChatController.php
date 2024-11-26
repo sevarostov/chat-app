@@ -18,16 +18,16 @@ class ChatController
 {
     /**
      * Получение списка чатов
-     *
+     *  
      * Отдается порционно по 20 чатов.
-     *
+     * 
      * Для получения следующих страниц необходимо передать `page` с номером страницы.
-     *
+     * 
      * @param Request $request
      * @return JsonResource
      *
      * @queryParam page Номер страницы. Example: 1
-     * @responseFile status=200 scenario="success" storage/responses/chats/index.200.json
+     * @responseFile status=200 scenario="success" storage/responses/chats/index.200.json 
      * @authenticated
      */
     public function index(Request $request): JsonResource
@@ -39,10 +39,10 @@ class ChatController
         $user = Auth::user();
 
         $chats = $user->chats()->with('lastMessage', 'users')
-                      ->skip($skip)
-                      ->limit($limit)
-                      ->get()
-                      ->sortByDesc('lastMessage.created_at');
+            ->skip($skip)
+            ->limit($limit)
+            ->get()
+            ->sortByDesc('lastMessage.created_at');
 
         ChatIndexResource::withoutWrapping();
 
@@ -51,11 +51,11 @@ class ChatController
 
     /**
      * Создание чата
-     *
+     *  
      * Создается чат с передаваемым пользователем, если его не существует.
-     *
-     * Для создания чата с пользователем необходимо в параметрах передать `user_id`.
-     *
+     * 
+     * Для создания чата с пользователем необходимо в параметрах передать `user_id`. 
+     * 
      * @param Request $request
      * @return Response|ResponseFactory
      *
@@ -68,9 +68,9 @@ class ChatController
     public function store(Request $request): Response|ResponseFactory
     {
         $validate = $request->validate([
-                                           //user_id Example: 2
-                                           'user_id' => ['required', 'int'],
-                                       ]);
+            //user_id Example: 2
+            'user_id' => ['required', 'int'],
+        ]);
 
         $userId = $validate['user_id'];
 

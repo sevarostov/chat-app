@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     /**
      * Чаты пользователя
-     *
+     * 
      * @return BelongsToMany
      */
     public function chats(): BelongsToMany
@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     /**
      * Получить полное имя
-     *
+     * 
      * @return string
      */
     public function getFullNameAttribute(): string

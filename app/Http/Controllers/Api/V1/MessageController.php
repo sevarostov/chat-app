@@ -15,11 +15,11 @@ class MessageController
 {
     /**
      * Получение списка сообщений
-     *
+     *  
      * Отдается порционно по 20 сообщений.
-     *
+     * 
      * Для получения следующих страниц необходимо передать `page` с номером страницы.
-     *
+     * 
      * @param int $chatId
      * @param Request $request
      * @return Response|ResponseFactory
@@ -51,11 +51,11 @@ class MessageController
 
     /**
      * Создание сообщения
-     *
-     * Создается сообщение в чате.
-     *
-     * Необходимо указать в URI `chatId` и передать `text`в теле запроса.
-     *
+     *  
+     * Создается сообщение в чате. 
+     * 
+     * Необходимо указать в URI `chatId` и передать `text`в теле запроса. 
+     * 
      * @param int $chatId
      * @param Request $request
      * @return Response|ResponseFactory
@@ -68,9 +68,9 @@ class MessageController
     public function store(int $chatId, Request $request): Response|ResponseFactory
     {
         $message = $request->validate([
-                                          //Text Example: Тестовое сообщение
-                                          'text' => ['required', 'string', 'max:255']
-                                      ]);
+            //Text Example: Тестовое сообщение
+            'text' => ['required', 'string', 'max:255']
+        ]);
 
         $user = Auth::user();
         $chat = $user->chats()->where('chats.id', $chatId)->first();
