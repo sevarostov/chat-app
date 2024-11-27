@@ -5,7 +5,7 @@
 [PHP 8.3](https://www.php.net/releases/8.3/en.php)
 [Composer (System Requirements)](https://getcomposer.org/doc/00-intro.md#system-requirements)
 [Laravel 11.33.2](https://laravel.com/docs/11.x)
-[MySql8.0](https://hub.docker.com/r/mysql/mysql-server#!)
+[MySQL 9.1.0](https://hub.docker.com/r/mysql/mysql-server#!)
 [Scribe](https://github.com/knuckleswtf/scribe)
 
 ## Settings
