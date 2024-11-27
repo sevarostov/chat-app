@@ -8,8 +8,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
-    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+    <link rel="stylesheet" href="{{ asset("/vendor/scribe/css/theme-default.style.css") }}" media="screen">
+    <link rel="stylesheet" href="{{ asset("/vendor/scribe/css/theme-default.print.css") }}" media="print">
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 
@@ -29,9 +29,9 @@
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="../docs/js/tryitout-4.38.0.js"></script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-4.38.0.js") }}"></script>
 
-    <script src="../docs/js/theme-default-4.38.0.js"></script>
+    <script src="{{ asset("/vendor/scribe/js/theme-default-4.38.0.js") }}"></script>
 
 </head>
 
@@ -40,7 +40,7 @@
 <a href="#" id="nav-button">
     <span>
         MENU
-        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+        <img src="{{ asset("/vendor/scribe/images/navbar.png") }}" alt="navbar-image"/>
     </span>
 </a>
 <div class="tocify-wrapper">
@@ -95,13 +95,13 @@
             </div>
 
     <ul class="toc-footer" id="toc-footer">
-                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
-                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                    <li style="padding-bottom: 5px;"><a href="{{ route("scribe.postman") }}">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="{{ route("scribe.openapi") }}">View OpenAPI spec</a></li>
                 <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 26, 2024</li>
+        <li>Last updated: November 27, 2024</li>
     </ul>
 </div>
 
@@ -112,7 +112,7 @@
 <aside>
     <strong>Base URL</strong>: <code>http://portaltest2.ru</code>
 </aside>
-<aside>Документация Api для тестового задания</aside>
+<aside>Документация Api</aside>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
@@ -917,7 +917,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://portaltest2.ru/api/v1/chats/3/messages"
+    "http://portaltest2.ru/api/v1/chats/8623/messages"
 );
 
 const params = {
@@ -1040,10 +1040,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="chatId"                data-endpoint="GETapi-v1-chats--chatId--messages"
-               value="3"
+               value="8623"
                data-component="url">
     <br>
-<p>Example: <code>3</code></p>
+<p>Example: <code>8623</code></p>
             </div>
                         <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
                                     <div style="padding-left: 28px; clear: unset;">
@@ -1074,7 +1074,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://portaltest2.ru/api/v1/chats/41/messages"
+    "http://portaltest2.ru/api/v1/chats/31153/messages"
 );
 
 const headers = {
@@ -1204,10 +1204,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="chatId"                data-endpoint="POSTapi-v1-chats--chatId--messages"
-               value="41"
+               value="31153"
                data-component="url">
     <br>
-<p>Example: <code>41</code></p>
+<p>Example: <code>31153</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">

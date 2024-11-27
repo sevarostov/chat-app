@@ -436,7 +436,7 @@ paths:
         in: path
         name: chatId
         description: ''
-        example: '3'
+        example: '2'
         required: true
         schema:
           type: string
