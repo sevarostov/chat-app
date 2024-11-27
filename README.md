@@ -12,13 +12,13 @@
 
 #### Copy file `.env.example` to `.env` 
 ```
-$ cp .env.example .env
+cp .env.example .env
 ```
 
 #### Make Composer install the project's dependencies into vendor/
 
 ```
-$ composer install
+composer install
 ```
 
 ## Generate key
