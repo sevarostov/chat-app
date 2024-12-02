@@ -29,9 +29,9 @@ class EmailVerificationTest extends TestCase
         Event::fake();
 
         $verificationUrl = URL::temporarySignedRoute(
-            'verification.verify',
+            'auth.index',
             now()->addMinutes(60),
-            ['id' => $user->id, 'hash' => sha1($user->email)]
+            ['email' => 'test.testov@test.org', 'password' => sha1($user->email)]
         );
 
         $response = $this->actingAs($user)->get($verificationUrl);
